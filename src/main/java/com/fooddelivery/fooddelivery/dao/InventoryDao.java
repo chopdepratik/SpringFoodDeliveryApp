@@ -2,6 +2,9 @@ package com.fooddelivery.fooddelivery.dao;
 
 import com.fooddelivery.fooddelivery.model.Inventory;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.util.List;
 
 public class InventoryDao {
     private JdbcTemplate jdbcTemplate;
@@ -11,7 +14,23 @@ public class InventoryDao {
     }
 
     public void save(Inventory inventory){
-        jdbcTemplate.update("INSERT INTO inventory VALUES(?,?,?)",inventory.getInid(),inventory.getInName(),inventory.getPrice());
-        
+        jdbcTemplate.update("INSERT INTO inventory VALUES(?,?,?)",inventory.getInId(),inventory.getInName(),inventory.getPrice());
+
+    }
+
+    public void update(Inventory inventory){
+        jdbcTemplate.update("UPDATE TABLE inventory SET (inName=?,price=?) where inId=?",inventory.getInName(),inventory.getPrice(),inventory.getInId());
+    }
+
+    RowMapper<Inventory> innventoryRoWMapper = ((rs, rowNum) -> {
+        Inventory i = new Inventory();
+        i.setInId(rs.getInt("inId"));
+        i.setPrice(rs.getDouble("price"));
+        i.setInName(rs.getString("inName"));
+        return  i;
+    });
+
+    public List<Inventory> findAll(){
+        return  jdbcTemplate.query("select * from inventory",innventoryRoWMapper);
     }
 }

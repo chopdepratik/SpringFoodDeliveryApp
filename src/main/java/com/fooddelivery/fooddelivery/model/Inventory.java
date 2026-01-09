@@ -1,16 +1,16 @@
 package com.fooddelivery.fooddelivery.model;
 
 public class Inventory {
-    private int Inid;
+    private int inId;
     private String inName;
     private double price;
 
-    public int getInid() {
-        return Inid;
+    public int getInId() {
+        return inId;
     }
 
-    public void setInid(int inid) {
-        Inid = inid;
+    public void setInId(int inId) {
+        this.inId = inId;
     }
 
     public String getInName() {
