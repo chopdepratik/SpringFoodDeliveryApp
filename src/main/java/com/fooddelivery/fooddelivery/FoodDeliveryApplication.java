@@ -2,10 +2,13 @@ package com.fooddelivery.fooddelivery;
 
 import com.fooddelivery.fooddelivery.config.AppConfig;
 import com.fooddelivery.fooddelivery.controller.OrderController;
+import com.fooddelivery.fooddelivery.dao.InventoryDao;
+import com.fooddelivery.fooddelivery.model.Inventory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -38,20 +41,19 @@ public class FoodDeliveryApplication {
 
         //Spring JDBC
 
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        JdbcTemplate jdbcTemplate = ctx.getBean(JdbcTemplate.class);
 
+        InventoryDao idao =  new InventoryDao(jdbcTemplate);
 
+        Inventory inventory = new Inventory();
 
+        inventory.setInName("BeanBean");
+        inventory.setPrice(4000);
+        inventory.setInId(102);
+        idao.save(inventory);
 
-
-
-
-
-
-//        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-//
-//        OrderController controller = ctx.getBean(OrderController.class);
-//
-//        controller.createNewOrder();
+        idao.getInventoryById(0);
 
     }
 

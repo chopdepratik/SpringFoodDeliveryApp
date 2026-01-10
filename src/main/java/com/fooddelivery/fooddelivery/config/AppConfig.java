@@ -18,7 +18,7 @@ public class AppConfig {
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
         ds.setUrl("jdbc:mysql://localhost:3306/foodapp");
         ds.setUsername("root");
-        ds.setPassword("@Mysqlroot#123");
+        ds.setPassword("#Mysqlroot#123");
         return  ds;
 
 

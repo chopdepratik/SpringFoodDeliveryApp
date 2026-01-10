@@ -7,6 +7,17 @@ public class User {
     private String address;
     private String mobNumber;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", mobNumber='" + mobNumber + '\'' +
+                '}';
+    }
+
     public int getUserId() {
         return userId;
     }

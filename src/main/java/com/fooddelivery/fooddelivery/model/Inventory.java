@@ -5,7 +5,17 @@ public class Inventory {
     private String inName;
     private double price;
 
-    public int getInId() {
+
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "id=" + inId +
+                ", name='" + inName + '\'' +
+                ", price=" + price +
+                '}';
+    }
+    public int getInId(int i) {
         return inId;
     }
 

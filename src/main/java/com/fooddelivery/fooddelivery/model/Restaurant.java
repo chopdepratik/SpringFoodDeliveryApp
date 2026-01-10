@@ -4,7 +4,20 @@ public class Restaurant {
     private int resId;
     private String restName;
     private int deliveryRadius;
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "resId=" + resId +
+                ", restName='" + restName + '\'' +
+                ", deliveryRadius=" + deliveryRadius +
+                ", address='" + address + '\'' +
+                ", ratings=" + ratings +
+                '}';
+    }
+
     private String address;
+    private int ratings;
 
     public int getRatings() {
         return ratings;
@@ -46,5 +59,5 @@ public class Restaurant {
         this.address = address;
     }
 
-    private int ratings;
+
 }
